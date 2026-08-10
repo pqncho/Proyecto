@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="article-show">
+
+  <%= render @article %>
+
+  <div class="article-actions">
+
+    <% if current_user == @article.user %>
+
+      <%= link_to "Editar",
+          edit_article_path(@article),
+          class: "action-link edit-link" %>
+
+      <%= button_to "Borrar",
+          @article,
+          method: :delete,
+          class: "action-link destroy-button" %>
+
+    <% end %>
+
+    <%= link_to "Volver a artículos",
+        articles_path,
+        class: "action-link back-link" %>
+
+  </div>
+
+</div>

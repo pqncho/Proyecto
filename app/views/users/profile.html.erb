@@ -1,0 +1,89 @@
+<div class="profile-container">
+
+  <div class="profile-card">
+
+    <div class="profile-header">
+      <h1>Mi perfil</h1>
+      <p>Gestioná tu información personal</p>
+    </div>
+
+
+    <div class="profile-info">
+
+      <div class="profile-item">
+        <h3>Nombre</h3>
+        <p><%= @user.name %></p>
+      </div>
+
+      <div class="profile-item">
+        <h3>Email</h3>
+        <p><%= @user.email %></p>
+      </div>
+
+      <div class="profile-item">
+        <h3>Artículos publicados</h3>
+        <p class="article-count">
+          <%= @user.articles.count %>
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="profile-actions">
+
+      <%= link_to "Editar perfil",
+          edit_user_path(@user),
+          class: "profile-button" %>
+
+      <%= link_to "Volver a artículos",
+          articles_path,
+          class: "profile-button secondary-button" %>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="my-articles">
+
+  <h2>Mis artículos</h2>
+
+  <% if @articles.any? %>
+
+    <% @articles.each do |article| %>
+
+      <div class="my-article-card">
+
+        <h3><%= article.title %></h3>
+
+        <p>
+          <%= truncate(article.body, length: 120) %>
+        </p>
+
+        <div class="my-article-footer">
+
+          <span>
+            <%= article.created_at.strftime("%d/%m/%Y") %>
+          </span>
+
+          <%= link_to "Ver artículo",
+              article_path(article),
+              class: "article-button" %>
+
+        </div>
+
+      </div>
+
+    <% end %>
+
+  <% else %>
+
+    <p class="empty-articles">
+      Todavía no escribiste ningún artículo.
+    </p>
+
+  <% end %>
+
+</div>

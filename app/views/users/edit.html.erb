@@ -1,0 +1,52 @@
+<div class="profile-container">
+
+  <div class="profile-card">
+
+    <div class="profile-header">
+      <h1>Editar perfil</h1>
+      <p>Actualizá tus datos personales</p>
+    </div>
+
+    <% if alert %>
+    <div class="alert-box">
+        <%= alert %>
+    </div>
+    <% end %>
+    <%= form_with model: @user do |form| %>
+
+     <div class="profile-form-group">
+        <%= form.label :name, "Nombre" %>
+        <%= form.text_field :name %>
+      </div>
+
+
+      <div class="profile-form-group">
+        <%= form.label :email, "Email" %>
+        <%= form.email_field :email %>
+      </div>
+
+
+      <div class="profile-form-group">
+        <%= form.label :password, "Nueva contraseña" %>
+        <%= form.password_field :password %>
+      </div>
+
+
+      <div class="profile-form-group">
+        <%= form.label :password_confirmation, "Confirmar contraseña" %>
+        <%= form.password_field :password_confirmation %>
+      </div>
+
+
+      <%= form.submit "Guardar cambios",
+          class: "profile-button" %>
+
+      <%= link_to "Regresar",profile_path,
+         class: "profile-button secondary-button" %>
+
+    <% end %>
+
+
+  </div>
+
+</div>
